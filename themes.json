@@ -1,0 +1,149 @@
+[
+  {
+    "name": "Blooket",
+    "primary": "#9A48AA",
+    "secondary": "#08C2D0",
+    "background": ["#0bc2cf", "#349aef"]
+  },
+  {
+    "name": "Blooket Dark",
+    "primary": "hsl(0,0%,14%)",
+    "secondary": "hsl(0,0%,20%)",
+    "background": ["hsl(0,0%,9%)", "hsl(0,0%,5%)"]
+  },
+  {
+    "name": "Sunset",
+    "primary": "#E44C51",
+    "secondary": "#FFA41B",
+    "background": ["#3a0ca3", "#f72585"]
+  },
+  {
+    "name": "Forest",
+    "primary": "#30A670",
+    "secondary": "#26ada5",
+    "background": ["#002017", "#003d2f"]
+  },
+  {
+    "name": "Ocean",
+    "primary": "#0077B6",
+    "secondary": "#90E0EF",
+    "background": ["#00B4D8", "#03045E"]
+  },
+  {
+    "name": "Cherry Blossom",
+    "primary": "#F25A7C",
+    "secondary": "#FF96C5",
+    "background": ["#500011", "#C01653"]
+  },
+  {
+    "name": "Minecraft",
+    "primary": "#61371f",
+    "secondary": "#70b237",
+    "background": ["#3c44aa", "#3ab3da"],
+    "customShopkeeper": [
+      "https://hollowvr.github.io/onlineassets/steveblooket.png",
+      "1"
+    ],
+    "customStore": "https://hollowvr.github.io/onlineassets/mcstoreblooket.svg"
+  },
+  {
+    "name": "Easter",
+    "primary": "#fad464",
+    "secondary": "#F4A8CF",
+    "background": ["#82EB75", "#5BA453"]
+  },
+  {
+    "name": "Halloween",
+    "primary": "#F86D01",
+    "secondary": "#18e810",
+    "background": ["#8803c2", "#b102a8"],
+    "customShopkeeper": [
+      "https://hollowvr.github.io/onlineassets/jackolanternblooket.png",
+      "1.3"
+    ]
+  },
+  {
+    "name": "Summer",
+    "primary": "#72D6E4",
+    "secondary": "#D8A93F",
+    "background": ["#89CDDA", "#FBDCA5"]
+  },
+  {
+    "name": "Autumn",
+    "primary": "#C16A19",
+    "secondary": "#DFA628",
+    "background": ["#AD3B2D", "#D8284D"]
+  },
+  {
+    "name": "Winter",
+    "primary": "#89c2f0",
+    "secondary": "#5a9bd8",
+    "background": ["#1c2b38", "#5aa1d8"]
+  },
+  {
+    "name": "Christmas",
+    "primary": "#C9001C",
+    "secondary": "#1FB34F",
+    "background": "radial-gradient(ellipse at bottom, #4e9a51 0%, #3d7b42 40%, #2f5e34 100%)",
+    "customShopkeeper": [
+      "https://ac.blooket.com/marketassets/blooks/santaclaus.svg",
+      "1"
+    ],
+    "customStore": "https://ac.blooket.com/dashclassic/assets/StoreWinter-DOhqNDCZ.svg"
+  },
+  {
+    "name": "Marti Gras",
+    "primary": "#A016FC",
+    "secondary": "#27DA3B",
+    "background": "linear-gradient(45deg,rgba(47, 163, 75, 1) 0%, rgba(140, 71, 151, 1) 50%, rgba(255, 204, 40, 1) 100%)"
+  },
+  {
+    "name": "Haze",
+    "primary": "#4e4c29",
+    "secondary": "#f8de99",
+    "background": ["#fdbb35", "#ad1f25"]
+  },
+  {
+    "name": "Twilight",
+    "primary": "rgba(38, 50, 56, 0.8)",
+    "secondary": "#b0bec5",
+    "background": ["#1a2327", "#37474f"]
+  },
+  {
+    "name": "Blood Moon",
+    "primary": "rgba(102, 0, 0, 0.8)",
+    "secondary": "#2f2f2f",
+    "background": ["#3e1414", "#000000"]
+  },
+  {
+    "name": "Kraken",
+    "primary": "rgba(0, 51, 102, 0.8)",
+    "secondary": "#1abc9c",
+    "background": "linear-gradient(to bottom, #7db9e8 -5%, #005073 10%, #003e58 25%, #002a3d 55%, #000022 80%)",
+    "customShopkeeper": [
+      "https://ac.blooket.com/marketassets/blooks/kraken.svg",
+      "1"
+    ],
+    "customStore": "/images/blooks/krakenshop.png"
+  },
+  {
+    "name": "usa",
+    "primary": "#424173",
+    "secondary": "#B52A3A",
+    "background": "repeating-linear-gradient(-5deg,#dbdbdb,#dbdbdb 60px,#B52A3A 60px,#B52A3A 120px)",
+    "customShopkeeper": ["/images/blooks/obama.png", "2"],
+    "customStore": "https://hollowvr.github.io/onlineassets/usastoreblooket.svg"
+  },
+  {
+    "name": "United Kingdom",
+    "primary": "#C2102C",
+    "secondary": "#21467C",
+    "background": "linear-gradient(rgba(5,5,5,0) calc(50% - 100px), #CD0002 calc(50% - 100px), #CD0002 calc(50% + 100px), rgba(5,5,5,0) calc(50% + 100px)) 0 0 / 100% 100% no-repeat,linear-gradient(90deg, rgba(5,5,5,0) calc(50% - 100px), #CD0002 calc(50% - 100px), #CD0002 calc(50% + 100px), rgba(5,5,5,0) calc(50% + 100px)) 220px 0 / 100% 100% no-repeat,linear-gradient(rgba(5,5,5,0) calc(50% - 150px), #DBDBDB calc(50% - 150px), #DBDBDB calc(50% + 150px), rgba(5,5,5,0) calc(50% + 150px)) 0 0 / 100% 100% no-repeat,linear-gradient(90deg, rgba(5,5,5,0) calc(50% - 150px), #DBDBDB calc(50% - 150px), #DBDBDB calc(50% + 150px), rgba(5,5,5,0) calc(50% + 150px)) 220px 0 / 100% 100% no-repeat,linear-gradient(26deg, transparent calc(50% - 80px), #DBDBDB calc(50% - 80px), #DBDBDB 50%, #CD0002 50%, #CD0002 calc(50% + 50px), #DBDBDB calc(50% + 50px), #DBDBDB calc(50% + 80px), transparent calc(50% + 80px)) 220px 0 / 100% 100% no-repeat,linear-gradient(-26deg, transparent calc(50% - 80px), #DBDBDB calc(50% - 80px), #DBDBDB calc(50% - 50px), #CD0002 calc(50% - 50px), #CD0002 50%, #DBDBDB 50%, #DBDBDB calc(50% + 80px), transparent calc(50% + 80px)) 220px 0 / 100% 100% no-repeat,linear-gradient(#007,#006) 0 0 / 100% 100% no-repeat"
+  },
+  {
+    "name": "Japan",
+    "primary": "#91011D",
+    "secondary": "#FB7BCA",
+    "background": "radial-gradient(circle,rgba(217, 69, 0, 1) 0%, rgba(217, 0, 0, 1) 30%, rgba(255, 255, 255, 1) 30%, rgba(207, 169, 189, 1) 100%) 220px 0 / 100% 100% no-repeat, rgba(207, 169, 189, 1)"
+  }
+]

@@ -1,0 +1,51 @@
+body {
+  min-width: 600px;
+  padding: 60px;
+}
+
+@font-face {
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("https://ac.blooket.com/dashboard/27a2184207d50463f6d57fbefc6b46cb0fabd71a/_next/static/media/ee40bb094c99a29a-s.p.woff2")
+    format("woff2");
+}
+html {
+  scroll-behavior: smooth;
+}
+
+:root {
+  font-family: Nunito;
+}
+
+h2 {
+  font-family: "TO";
+  color: white;
+  text-shadow:
+    3px 5px 10px rgba(0, 0, 0, 0.2),
+    2px 3px 2px rgba(0, 0, 0, 0.2);
+  font-size: 2em;
+}
+
+.verticalList {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+.box {
+  width: 500px;
+  background: var(--blookedex-primary);
+  border-radius: 10px;
+  padding: 20px;
+  border: 6px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+}
+
+.box p,
+.box ul {
+  font-size: 1.3em;
+  color: white;
+  text-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+}

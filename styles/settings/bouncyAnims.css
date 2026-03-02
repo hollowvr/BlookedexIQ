@@ -1,0 +1,54 @@
+@keyframes blookedex-chancesMenuStart {
+  from {
+    transform: translateY(-50%) scale(0);
+    left: 100px;
+  }
+  to {
+    transform: translateY(-50%) scale(1);
+    left: 525px;
+  }
+}
+
+@keyframes blookedex-zoomInAnim {
+  from {
+    transform: translate(-50%, -50%) scale(0);
+  }
+  to {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes blookedex-packImgKeyframes {
+  from {
+    transform: translateY(-50%) rotateY(90deg) scale(0.1);
+  }
+  to {
+    transform: translateY(-50%) rotateY(20deg) scale(1);
+  }
+}
+
+.blookedex-shopMenuNoTokens {
+  animation: blookedex-zoomInAnim 0.5s var(--blookedex-bouncy);
+}
+.blookedex-shopMenu {
+  animation: blookedex-zoomInAnim 0.5s var(--blookedex-bouncy);
+  transition: transform 0.5s ease;
+}
+
+.blookedex-chancesMenu {
+  animation: blookedex-chancesMenuStart 0.5s var(--blookedex-bouncy);
+}
+
+.blookedex-shopMenu-packImg {
+  animation: 0.5s cubic-bezier(0.08, 0.54, 0.55, 1.07)
+    blookedex-shopMenu-packImgKeyframes;
+}
+
+.blookedex-popupMenu {
+  animation: blookedex-zoomInAnim 0.5s var(--blookedex-bouncy);
+}
+
+/*blooks page*/
+[class*="BlookModal_blookModal_"] {
+  animation: blookedex-zoomInAnim 0.5s var(--blookedex-bouncy);
+}

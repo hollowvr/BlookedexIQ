@@ -1,0 +1,30 @@
+[
+  {
+    "name": "Countries Pack",
+    "cost": 0,
+    "background": "repeating-linear-gradient(-5deg,#dbdbdb,#dbdbdb 40px,#B52A3A 40px,#B52A3A 80px)",
+    "description": "Themes and Blooks of multiple countries.",
+    "packs": [
+      {
+        "name": "usa",
+        "primary": "#424173",
+        "secondary": "#B52A3A",
+        "background": "repeating-linear-gradient(-5deg,#dbdbdb,#dbdbdb 60px,#B52A3A 60px,#B52A3A 120px)",
+        "customShopkeeper": ["/images/blooks/obama.png", "2"],
+        "customStore": "https://hollowvr.github.io/onlineassets/usastoreblooket.svg"
+      },
+      {
+        "name": "United Kingdom",
+        "primary": "#C2102C",
+        "secondary": "#21467C",
+        "background": "linear-gradient(rgba(5,5,5,0) calc(50% - 100px), #CD0002 calc(50% - 100px), #CD0002 calc(50% + 100px), rgba(5,5,5,0) calc(50% + 100px)) 0 0 / 100% 100% no-repeat,linear-gradient(90deg, rgba(5,5,5,0) calc(50% - 100px), #CD0002 calc(50% - 100px), #CD0002 calc(50% + 100px), rgba(5,5,5,0) calc(50% + 100px)) 220px 0 / 100% 100% no-repeat,linear-gradient(rgba(5,5,5,0) calc(50% - 150px), #DBDBDB calc(50% - 150px), #DBDBDB calc(50% + 150px), rgba(5,5,5,0) calc(50% + 150px)) 0 0 / 100% 100% no-repeat,linear-gradient(90deg, rgba(5,5,5,0) calc(50% - 150px), #DBDBDB calc(50% - 150px), #DBDBDB calc(50% + 150px), rgba(5,5,5,0) calc(50% + 150px)) 220px 0 / 100% 100% no-repeat,linear-gradient(26deg, transparent calc(50% - 80px), #DBDBDB calc(50% - 80px), #DBDBDB 50%, #CD0002 50%, #CD0002 calc(50% + 50px), #DBDBDB calc(50% + 50px), #DBDBDB calc(50% + 80px), transparent calc(50% + 80px)) 220px 0 / 100% 100% no-repeat,linear-gradient(-26deg, transparent calc(50% - 80px), #DBDBDB calc(50% - 80px), #DBDBDB calc(50% - 50px), #CD0002 calc(50% - 50px), #CD0002 50%, #DBDBDB 50%, #DBDBDB calc(50% + 80px), transparent calc(50% + 80px)) 220px 0 / 100% 100% no-repeat,linear-gradient(#007,#006) 0 0 / 100% 100% no-repeat"
+      },
+      {
+        "name": "Japan",
+        "primary": "#F25A7C",
+        "secondary": "#FB7BCA",
+        "background": "radial-gradient(circle,rgba(217, 69, 0, 1) 0%, rgba(217, 0, 0, 1) 30%, rgba(255, 255, 255, 1) 30%, rgba(207, 169, 189, 1) 100%) 220px 0 / 100% 100% no-repeat, rgba(207, 169, 189, 1)"
+      }
+    ]
+  }
+]

@@ -1,0 +1,44 @@
+{
+  "name": "BlookedexIQ",
+  "description": "Visual/functional overhaul for Blooket",
+  "version": "1.1.0",
+  "manifest_version": 3,
+  "content_scripts": [
+    {
+      "js": ["scripts/content.js"],
+      "type": "module",
+      "css": ["styles/global.css"],
+      "matches": ["https://dashboard.blooket.com/*"]
+    }
+  ],
+  "background": {
+    "service_worker": "scripts/background.js"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "themes.json",
+        "blooks.json",
+        "packs.json",
+        "styles/settings/*.css",
+        "pages/*.html",
+        "fonts/TitanOne-Regular.ttf",
+        "images/blooks/*.png",
+        "images/icon-128.png",
+        "images/resources/*.png"
+      ],
+      "matches": ["https://dashboard.blooket.com/*"]
+    }
+  ],
+  "permissions": ["storage"],
+  "action": {
+    "default_title": "BlookedexIQ",
+    "default_popup": "pages/blookedex-tab.html"
+  },
+  "icons": {
+    "16": "images/icon-16.png",
+    "32": "images/icon-32.png",
+    "48": "images/icon-48.png",
+    "128": "images/icon-128.png"
+  }
+}

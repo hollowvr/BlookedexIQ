@@ -1,0 +1,278 @@
+<template id="shopMenuNoTokens">
+  <div class="blookedex-shopMenuNoTokens">
+    Not Enough Tokens!
+    <button class="blookedex-closeBtn"><svg style="width:.6875em;height:1em;" aria-hidden="true" focusable="false"
+        data-prefix="fas" data-icon="times" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 512">
+        <path class="blookedex-btnClose" fill="hsla(0, 0%, 100%, .2)"
+          d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z" />
+      </svg></button>
+    <button class="blookedex-closeBtnLarge">
+      <div class="blookedex-closeBtnLargeFront">Close</div>
+      <div class="blookedex-closeBtnLargeMiddle"></div>
+      <div class="blookedex-closeBtnLargeShadow"></div>
+    </button>
+  </div>
+</template>
+
+<template id="shopMenu">
+  <div class="blookedex-shopMenu">
+    <button class="blookedex-closeBtn"><svg style="width:.6875em;height:1em;" aria-hidden="true" focusable="false"
+        data-prefix="fas" data-icon="times" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 512">
+        <path class="blookedex-btnClose" fill="hsla(0, 0%, 100%, .2)"
+          d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z" />
+      </svg></button>
+    <button class="blookedex-shopMenu-buyBtn">
+      <div class="blookedex-shopMenu-buyBtnFront">Purchase</div>
+      <div class="blookedex-shopMenu-buyBtnMiddle"></div>
+      <div class="blookedex-shopMenu-buyBtnShadow"></div>
+    </button>
+    <div class="blookedex-shopMenu-chancesPreview">
+      <div class="blookedex-shopMenu-chancesPreviewLabel">Chances</div>
+      <div class="blookedex-shopMenu-chancesPreviewScroller"></div>
+    </div>
+    <div class="blookedex-shopMenu-packImg"></div>
+    <div class="blookedex-shopMenu-packName"></div>
+    <div class="blookedex-shopMenu-cost"></div>
+  </div>
+</template>
+
+<template id="chancesMenu">
+  <div class="blookedex-chancesMenu">
+    <button class="blookedex-closeBtn"><svg style="width:.6875em;height:1em;" aria-hidden="true" focusable="false"
+        data-prefix="fas" data-icon="times" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 512">
+        <path class="blookedex-btnClose" fill="hsla(0, 0%, 100%, .2)"
+          d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z" />
+      </svg></button>
+    <div class="blookedex-chanceMenuTitle">Chances-</div>
+    <div class="blookedex-chancesMenuContainer"></div>
+  </div>
+</template>
+
+<template id="chancesMenuRow">
+  <div class="blookedex-chancesMenuRow">
+    <img class="blookedex-chancesMenuRowImg" />
+    <div class="blookedex-rchancesMenuRowCol">
+      <div class="blookedex-chancesMenuRowLabel">Name</div>
+      <div class="blookedex-chancesMenuRowChance">0.003%</div>
+    </div>
+  </div>
+</template>
+
+<template id="themePreview">
+  <div class="themePreview">
+    <button class="themeDeleteBtn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+        <path fill="currentColor"
+          d="M232.7 69.9L224 96L128 96C110.3 96 96 110.3 96 128C96 145.7 110.3 160 128 160L512 160C529.7 160 544 145.7 544 128C544 110.3 529.7 96 512 96L416 96L407.3 69.9C402.9 56.8 390.7 48 376.9 48L263.1 48C249.3 48 237.1 56.8 232.7 69.9zM512 208L128 208L149.1 531.1C150.7 556.4 171.7 576 197 576L443 576C468.3 576 489.3 556.4 490.9 531.1L512 208z" />
+      </svg></button>
+    <div class="themePreviewBody">
+      <div class="themePreviewSidebar">
+        <div style="height:3px;width:15px;background:#efefefee;border-radius:10px;"></div>
+        <div class="themePreviewPlay" style="height:8px;width:18px;border-radius:2px;"></div>
+        <div style="height:2px;width:10px;background:#efefefee;border-radius:10px;"></div>
+        <div style="height:2px;width:13px;background:#efefefee;border-radius:10px;"></div>
+        <div style="height:2px;width:15px;background:#efefefee;border-radius:10px;"></div>
+        <div style="height:2px;width:10px;background:#efefefee;border-radius:10px;"></div>
+        <div style="height:2px;width:8px;background:#efefefee;border-radius:10px;"></div>
+        <div style="height:2px;width:13px;background:#efefefee;border-radius:10px;"></div>
+      </div>
+    </div>
+    <div class="themePreviewLabel">Blooket</div>
+  </div>
+</template>
+
+<template id="sidebarTab">
+  <div class="blookedex-sidebarTab">
+    <span class="blookedex-sidebarTab-icon"></span>
+    <span class="blookedex-sidebarTab-label"></span>
+  </div>
+</template>
+
+<!--sidebarTab icon SVGs-->
+<template id="tabIcon-Blookedex">
+  <svg aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+    <path fill="currentColor"
+      d="M624 208h-64v-64c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16v64h-64c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h64v64c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16v-64h64c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16zm-400 48c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z">
+    </path>
+  </svg>
+</template>
+
+<template id="tabIcon-Index">
+  <svg aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+    <path fill="currentColor"
+      d="M480 576L192 576C139 576 96 533 96 480L96 160C96 107 139 64 192 64L496 64C522.5 64 544 85.5 544 112L544 400C544 420.9 530.6 438.7 512 445.3L512 512C529.7 512 544 526.3 544 544C544 561.7 529.7 576 512 576L480 576zM192 448C174.3 448 160 462.3 160 480C160 497.7 174.3 512 192 512L448 512L448 448L192 448zM224 216C224 229.3 234.7 240 248 240L424 240C437.3 240 448 229.3 448 216C448 202.7 437.3 192 424 192L248 192C234.7 192 224 202.7 224 216zM248 288C234.7 288 224 298.7 224 312C224 325.3 234.7 336 248 336L424 336C437.3 336 448 325.3 448 312C448 298.7 437.3 288 424 288L248 288z" />
+  </svg>
+</template>
+
+<template id="tabIcon-Changelog">
+  <svg aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+    <path fill="currentColor"
+      d="M480 576L192 576C139 576 96 533 96 480L96 160C96 107 139 64 192 64L496 64C522.5 64 544 85.5 544 112L544 400C544 420.9 530.6 438.7 512 445.3L512 512C529.7 512 544 526.3 544 544C544 561.7 529.7 576 512 576L480 576zM192 448C174.3 448 160 462.3 160 480C160 497.7 174.3 512 192 512L448 512L448 448L192 448zM224 216C224 229.3 234.7 240 248 240L424 240C437.3 240 448 229.3 448 216C448 202.7 437.3 192 424 192L248 192C234.7 192 224 202.7 224 216zM248 288C234.7 288 224 298.7 224 312C224 325.3 234.7 336 248 336L424 336C437.3 336 448 325.3 448 312C448 298.7 437.3 288 424 288L248 288z" />
+  </svg>
+</template>
+
+<template id="popupMenu">
+  <div class="blookedex-modal">
+    <div class="blookedex-popupMenu">
+      <div class="blookedex-popupMenu-message">This is a test Message.</div>
+      <button class="blookedex-closeBtn"><svg style="width:.6875em;height:1em;" aria-hidden="true" focusable="false"
+          data-prefix="fas" data-icon="times" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 512">
+          <path class="blookedex-btnClose" fill="hsla(0, 0%, 100%, .2)"
+            d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z" />
+        </svg></button>
+      <button class="blookedex-closeBtnLarge">
+        <div class="blookedex-closeBtnLargeFront">
+          Okay!</div>
+        <div class="blookedex-closeBtnLargeMiddle"></div>
+        <div class="blookedex-closeBtnLargeShadow"></div>
+      </button>
+    </div>
+  </div>
+</template>
+
+<template id="customThemeMenu">
+  <div class="blookedex-modal">
+    <div class="blookedex-popupMenu">
+      <div class="customThemeMenu-message">Paste theme json (UI coming soon)</div>
+      <textarea class="customThemeMenuInput" placeholder="Format: json object with following properties:
+  name: string, the name of your theme (must be unique)
+  primary: string, the color you want your theme's primary color to be (can be css gradient)
+  secondary: string, the color you want your theme's secondary color to be (can be css gradient)
+  background: string or array [string, string],
+    if string: the color you want your theme's background to be (can be css gradient)
+    if array: creates gradient from top (first string color) to bottom (second string color)"></textarea>
+
+      <button class="blookedex-closeBtn"><svg style="width:.6875em;height:1em;" aria-hidden="true" focusable="false"
+          data-prefix="fas" data-icon="times" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 512">
+          <path class="blookedex-btnClose" fill="hsla(0, 0%, 100%, .2)"
+            d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z" />
+        </svg></button>
+      <button class="blookedex-closeBtnLarge">
+        <div class="blookedex-closeBtnLargeFront">
+          Okay!</div>
+        <div class="blookedex-closeBtnLargeMiddle"></div>
+        <div class="blookedex-closeBtnLargeShadow"></div>
+      </button>
+    </div>
+  </div>
+</template>
+
+<template id="customThemeAddButton">
+  <div id="userThemeCreate">
+    <p>+</p>
+  </div>
+</template>
+
+<template id="playerIconTitle">
+  <div class="blookedex-playerIconTitle">Blookedex Icons-</div>
+</template>
+
+<template id="iconsNoBlooks">
+  <div class="blookedex-iconsNoBlooks">You have no Blookedex Blooks yet</div>
+</template>
+
+<template id="customBlookIconList">
+  <div class="blookedex-customBlookIconList">
+    <button class="blookedex-iconDeleteBtn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+        <path fill="currentColor"
+          d="M232.7 69.9L224 96L128 96C110.3 96 96 110.3 96 128C96 145.7 110.3 160 128 160L512 160C529.7 160 544 145.7 544 128C544 110.3 529.7 96 512 96L416 96L407.3 69.9C402.9 56.8 390.7 48 376.9 48L263.1 48C249.3 48 237.1 56.8 232.7 69.9zM512 208L128 208L149.1 531.1C150.7 556.4 171.7 576 197 576L443 576C468.3 576 489.3 556.4 490.9 531.1L512 208z" />
+      </svg></button>
+    <img class="blookedex-customBlookIconList" />
+  </div>
+</template>
+
+<template id="customBlookAdd">
+  <div class="blookedex-customBlookAdd"><input type="file" id="imageUpload" accept="image/*" />
+    <div>+</div>
+  </div>
+
+</template>
+
+<template id="marketPack">
+  <div class="marketPack">
+    <div class="marketPackLabel">Countries Pack</div>
+    <div class="marketPackCost">Free</div>
+    <div class="marketPackDesc">A fun pack with different country themes, etc. Represent! I pledge allegiance to
+      the flag...</div>
+    <div class="marketPackOwned">Not Owned</div>
+  </div>
+</template>
+
+<template id="installedMenu">
+  <div class="blookedex-modal">
+    <div class="blookedex-installedMenu">
+      <div class="background"></div>
+      <h2>Thank you for installing BlookedexIQ</h2>
+      <div class="blookedex-row">
+        <p>Access features using the Blookedex tab located in the blooket sidebar, or click the extension icon in the
+          extensions bar while on Blooket.</p>
+        <img class="sidebarimg" />
+      </div>
+      <p>Blookedex is an extension that updates the design, feel, and user interface of the popular educational site
+        Blooket. It
+        enhances your overall experience through immersive animations, vast colorful themes, and new UI elements.</p>
+
+      <p>Select a theme:</p>
+      <div id="themesContainer">
+        <div class="themePreview normaltheme"
+          style="--primary: #9A48AA; --secondary: #08C2D0; --background: linear-gradient(#0bc2cf, #349aef);">
+          <div class="themePreviewBody">
+            <div class="themePreviewSidebar">
+              <div style="height:3px;width:15px;background:#efefefee;border-radius:10px;"></div>
+              <div class="themePreviewPlay" style="height:8px;width:18px;border-radius:2px;"></div>
+              <div style="height:2px;width:10px;background:#efefefee;border-radius:10px;"></div>
+              <div style="height:2px;width:13px;background:#efefefee;border-radius:10px;"></div>
+              <div style="height:2px;width:15px;background:#efefefee;border-radius:10px;"></div>
+              <div style="height:2px;width:10px;background:#efefefee;border-radius:10px;"></div>
+              <div style="height:2px;width:8px;background:#efefefee;border-radius:10px;"></div>
+              <div style="height:2px;width:13px;background:#efefefee;border-radius:10px;"></div>
+            </div>
+          </div>
+          <div class="themePreviewLabel">Blooket</div>
+        </div>
+        <div class="themePreview darktheme"
+          style="--primary: hsl(0,0%,14%); --secondary: hsl(0,0%,20%); --background: linear-gradient(hsl(0,0%,9%), hsl(0,0%,5%));">
+          <div class="themePreviewBody">
+            <div class="themePreviewSidebar">
+              <div style="height:3px;width:15px;background:#efefefee;border-radius:10px;"></div>
+              <div class="themePreviewPlay" style="height:8px;width:18px;border-radius:2px;"></div>
+              <div style="height:2px;width:10px;background:#efefefee;border-radius:10px;"></div>
+              <div style="height:2px;width:13px;background:#efefefee;border-radius:10px;"></div>
+              <div style="height:2px;width:15px;background:#efefefee;border-radius:10px;"></div>
+              <div style="height:2px;width:10px;background:#efefefee;border-radius:10px;"></div>
+              <div style="height:2px;width:8px;background:#efefefee;border-radius:10px;"></div>
+              <div style="height:2px;width:13px;background:#efefefee;border-radius:10px;"></div>
+            </div>
+          </div>
+          <div class="themePreviewLabel">Blooket Dark</div>
+        </div>
+        <div class="themePreview krakentheme"
+          style="--primary: rgba(0, 51, 102, 0.8); --secondary: #1abc9c; --background: linear-gradient(to bottom, #7db9e8 -5%, #005073 10%, #003e58 25%, #002a3d 55%, #000022 80%);">
+          <div class="themePreviewBody">
+            <div class="themePreviewSidebar">
+              <div style="height:3px;width:15px;background:#efefefee;border-radius:10px;"></div>
+              <div class="themePreviewPlay" style="height:8px;width:18px;border-radius:2px;"></div>
+              <div style="height:2px;width:10px;background:#efefefee;border-radius:10px;"></div>
+              <div style="height:2px;width:13px;background:#efefefee;border-radius:10px;"></div>
+              <div style="height:2px;width:15px;background:#efefefee;border-radius:10px;"></div>
+              <div style="height:2px;width:10px;background:#efefefee;border-radius:10px;"></div>
+              <div style="height:2px;width:8px;background:#efefefee;border-radius:10px;"></div>
+              <div style="height:2px;width:13px;background:#efefefee;border-radius:10px;"></div>
+            </div>
+          </div>
+          <div class="themePreviewLabel">Kraken</div>
+        </div>
+      </div>
+      <button class="blookedex-closeBtn"><svg style="width:.6875em;height:1em;" aria-hidden="true" focusable="false"
+          data-prefix="fas" data-icon="times" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 512">
+          <path class="blookedex-btnClose" fill="hsla(0, 0%, 100%, .2)"
+            d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z" />
+        </svg></button>
+      <button class="blookedex-closeBtnLarge">
+        <div class="blookedex-closeBtnLargeFront">
+          Okay!</div>
+        <div class="blookedex-closeBtnLargeMiddle"></div>
+        <div class="blookedex-closeBtnLargeShadow"></div>
+      </button>
+    </div>
+  </div>
+</template>
