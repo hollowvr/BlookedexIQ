@@ -17,6 +17,14 @@
     transform: translate(-50%, -50%) scale(1);
   }
 }
+@keyframes blookedex-zoomInAnimNoTranslate {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
 
 @keyframes blookedex-packImgKeyframes {
   from {
@@ -46,6 +54,10 @@
 
 .blookedex-popupMenu {
   animation: blookedex-zoomInAnim 0.5s var(--blookedex-bouncy);
+}
+
+.nameBox {
+  animation: blookedex-zoomInAnimNoTranslate 0.5s var(--blookedex-bouncy);
 }
 
 /*blooks page*/

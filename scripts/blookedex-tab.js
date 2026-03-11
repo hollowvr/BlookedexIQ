@@ -18,8 +18,17 @@ async function populateThemes() {
   presetContainer.innerHTML = "";
   userContainer.innerHTML = "";
 
+  const adminCodes = await retrieveSetting("adminCodes");
+  const adminObject = await retrieveJSON("/admincodes.json");
+  let adminThemes = [];
+  for (const code of adminCodes) {
+    if (Object.hasOwn(adminObject[code], "themes")) {
+      adminThemes = [...adminThemes, ...adminObject[code].themes];
+    }
+  }
+
   //Preset themes
-  for (const theme of json) {
+  for (const theme of [...json, ...adminThemes]) {
     const clone = await loadTemplate("themePreview");
 
     clone.style.setProperty("--primary", theme.primary);
@@ -43,6 +52,52 @@ async function populateThemes() {
     presetContainer.appendChild(clone);
   }
 
+  async function addManualTheme(menu) {
+    if (
+      Array.isArray(
+        JSON.parse(menu.querySelector(".customThemeMenuInput").value),
+      )
+    ) {
+      for (const obj of JSON.parse(
+        menu.querySelector(".customThemeMenuInput").value,
+      )) {
+        const parsed = validateTheme(JSON.stringify(obj));
+        if (parsed.valid) {
+          const userThemes = await retrieveSetting("userThemes");
+          if (userThemes.some((theme) => theme.name == parsed.value.name)) {
+            alert("Name already in use! Please pick another.");
+            return;
+          }
+          parsed.value.userMade = true;
+          const newThemes = [...userThemes, parsed.value];
+          await setSetting("userThemes", newThemes);
+          populateThemes();
+        } else {
+          alert("Invalid format.");
+        }
+      }
+      menu.remove();
+      return;
+    }
+    const parsed = validateTheme(
+      menu.querySelector(".customThemeMenuInput").value,
+    );
+    if (parsed.valid) {
+      const userThemes = await retrieveSetting("userThemes");
+      if (userThemes.some((theme) => theme.name == parsed.value.name)) {
+        alert("Name Already In Use");
+        return;
+      }
+      parsed.value.userMade = true;
+      const newThemes = [...userThemes, parsed.value];
+      await setSetting("userThemes", newThemes);
+      populateThemes();
+      menu.remove();
+    } else {
+      alert("Invalid format.");
+    }
+  }
+
   //user themes
   for (const theme of userThemes) {
     const clone = await loadTemplate("themePreview");
@@ -60,6 +115,38 @@ async function populateThemes() {
         const newThemes = userThemes.filter((item) => item.name !== theme.name);
         setSetting("userThemes", newThemes);
         populateThemes();
+      });
+
+    clone
+      .querySelector(".themeConfigBtn")
+      .addEventListener("click", async (event) => {
+        event.stopPropagation();
+        const configMenu = await loadTemplate("themeConfigMenu");
+        enableCloseBtns(configMenu);
+        const c = theme;
+        delete c.userMade;
+        configMenu.querySelector(".customThemeMenuInput").value =
+          JSON.stringify(c, null, 2);
+        configMenu.querySelector(".blookedex-closeBtnLarge").onclick =
+          async () => {
+            if (
+              !validateTheme(
+                configMenu.querySelector(".customThemeMenuInput").value,
+              )
+            )
+              return;
+            const themes = await retrieveSetting("userThemes");
+
+            themes[themes.findIndex((o) => o.name === theme.name)] = JSON.parse(
+              configMenu.querySelector(".customThemeMenuInput").value,
+            );
+
+            await setSetting("userThemes", themes);
+
+            populateThemes();
+            configMenu.remove();
+          };
+        document.body.appendChild(configMenu);
       });
 
     clone.addEventListener("click", function () {
@@ -84,50 +171,27 @@ async function populateThemes() {
     menu.querySelector(".blookedex-closeBtn").onclick = () => {
       menu.remove();
     };
-    menu.querySelector(".blookedex-closeBtnLarge").onclick = async () => {
-      if (
-        Array.isArray(
-          JSON.parse(menu.querySelector(".customThemeMenuInput").value),
-        )
-      ) {
-        for (const obj of JSON.parse(
-          menu.querySelector(".customThemeMenuInput").value,
-        )) {
-          const parsed = validateTheme(JSON.stringify(obj));
-          if (parsed.valid) {
-            const userThemes = await retrieveSetting("userThemes");
-            if (userThemes.some((theme) => theme.name == parsed.value.name)) {
-              alert("Name Already In Use");
-              return;
-            }
-            parsed.value.userMade = true;
-            const newThemes = [...userThemes, parsed.value];
-            await setSetting("userThemes", newThemes);
-            populateThemes();
-          } else {
-            alert("Invalid format.");
-          }
-        }
-        menu.remove();
-        return;
-      }
-      const parsed = validateTheme(
-        menu.querySelector(".customThemeMenuInput").value,
-      );
-      if (parsed.valid) {
-        const userThemes = await retrieveSetting("userThemes");
-        if (userThemes.some((theme) => theme.name == parsed.value.name)) {
-          alert("Name Already In Use");
-          return;
-        }
-        parsed.value.userMade = true;
-        const newThemes = [...userThemes, parsed.value];
-        await setSetting("userThemes", newThemes);
-        populateThemes();
-        menu.remove();
-      } else {
-        alert("Invalid format.");
-      }
+
+    menu.querySelector(".blookedex-closeBtnLarge").onclick = () => {
+      menu.remove();
+    };
+
+    menu.querySelector(".customThemeMenu-PasteBtn").onclick = async () => {
+      const paste = await loadTemplate("customThemeMenuPaste");
+      menu.querySelector(".blookedex-row").replaceWith(paste);
+      menu.querySelector(
+        ".blookedex-closeBtnLarge",
+      ).firstElementChild.textContent = "Add Theme!";
+
+      //manual
+      menu.querySelector(".blookedex-closeBtnLarge").onclick = async () => {
+        addManualTheme(menu);
+      };
+    };
+
+    menu.querySelector(".customThemeMenu-EditorBtn").onclick = async () => {
+      menu.remove();
+      window.parent.postMessage("openEditor", "https://dashboard.blooket.com");
     };
     document.body.appendChild(menu);
   };
@@ -282,4 +346,19 @@ document.getElementById("changelogBtn").onclick = async () => {
     ],
     { duration: 300, easing: "cubic-bezier(0,.15,.5,1)" },
   );
+};
+
+document.getElementById("adminCodeBtn").onclick = async () => {
+  const text = document.getElementById("adminCodeInput").value;
+  const adminObject = await retrieveJSON("/admincodes.json");
+  console.log(adminObject);
+  if (Object.keys(adminObject).includes(text.toLowerCase())) {
+    const adminCodes = await retrieveSetting("adminCodes");
+    if (!adminCodes.includes(text)) {
+      adminCodes.push(text);
+      await setSetting("adminCodes", adminCodes);
+    }
+    document.getElementById("adminCodeInput").value = "";
+    window.parent.postMessage("reloadTab", "https://dashboard.blooket.com");
+  }
 };

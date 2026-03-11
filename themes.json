@@ -98,10 +98,12 @@
     "background": "linear-gradient(45deg,rgba(47, 163, 75, 1) 0%, rgba(140, 71, 151, 1) 50%, rgba(255, 204, 40, 1) 100%)"
   },
   {
-    "name": "Haze",
-    "primary": "#4e4c29",
-    "secondary": "#f8de99",
-    "background": ["#fdbb35", "#ad1f25"]
+    "name": "Flower Boy",
+    "primary": "#414A13",
+    "secondary": "#567C58",
+    "background": ["#fdbb35", "#ad1f25"],
+    "customShopkeeper": ["/images/blooks/tyler.png", "2.2"],
+    "customStore": "/images/blooks/flowerboyshop.png"
   },
   {
     "name": "Twilight",
@@ -113,7 +115,8 @@
     "name": "Blood Moon",
     "primary": "rgba(102, 0, 0, 0.8)",
     "secondary": "#2f2f2f",
-    "background": ["#3e1414", "#000000"]
+    "background": ["#3e1414", "#000000"],
+    "customStore": "/images/blooks/bloodmoonshop.png"
   },
   {
     "name": "Kraken",

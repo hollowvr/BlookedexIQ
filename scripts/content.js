@@ -18,6 +18,13 @@ function isReact() {
   return false;
 }
 
+async function retrieveJSON(url) {
+  const u = chrome.runtime.getURL(url);
+  const res = await fetch(u);
+  const json = await res.json();
+  return json;
+}
+
 //returns the elements which has a class that contains the argument
 function findElement(str, parent = document) {
   const els = parent.querySelectorAll(`[class*="${str}"]`);
@@ -58,6 +65,7 @@ async function retrieveSettings() {
     useMarketMenu: true,
     useBouncyAnims: true,
     useTitanHeaders: true,
+    adminCodes: [],
   };
 
   const { userSettings = {} } = await chrome.storage.sync.get("userSettings");
@@ -98,6 +106,29 @@ async function removeSetting(key) {
   window.blookedexSettingsStore = settings;
 }
 
+function safeSetImage(node, src) {
+  if (node.tagName != "IMG") return;
+  node.src = src;
+
+  const observer = new MutationObserver((mutations) => {
+    for (const mutation of mutations) {
+      if (mutation.type === "attributes" && mutation.attributeName === "src") {
+        const newImg = node.cloneNode(true);
+        newImg.src = src;
+
+        node.parentElement.insertBefore(newImg, node);
+        node.style.display = "none";
+        observer.disconnect();
+      }
+    }
+  });
+
+  observer.observe(node, {
+    attributes: true,
+    attributeFilter: ["src"],
+  });
+}
+
 function loadCustomPage(src) {
   const page = document.getElementById("blookedex-page");
   const newSrc = src.includes("://") ? src : chrome.runtime.getURL(src);
@@ -109,15 +140,13 @@ function loadCustomPage(src) {
   const pageBody = document.createElement("div");
   pageBody.id = "blookedex-custom-body";
 
-  const loader = document.createElement("div");
-  loader.className = "blookedex-loader";
-
   const customPage = document.createElement("iframe");
+  customPage.style.visibility = "hidden";
   customPage.id = "blookedex-page";
   customPage.src = newSrc;
 
   customPage.addEventListener("load", (e) => {
-    loader.remove();
+    customPage.style.removeProperty("visibility");
     e.target.animate(
       [
         {
@@ -139,7 +168,6 @@ function loadCustomPage(src) {
   customBackground.className = "blookedex-custom-background";
 
   pageBody.append(customBackground);
-  pageBody.append(loader);
   pageBody.appendChild(customPage);
 
   if (isReact()) {
@@ -359,7 +387,31 @@ async function setToCustomBlook(node) {
 
   let src = customBlook.url;
   src = src.includes(":") ? src : chrome.runtime.getURL(src);
-  node.src = src;
+  safeSetImage(node, src);
+}
+
+function injectBG() {
+  const bg = document.createElement("div");
+  bg.className = "blookedex-custom-background blookedex-injected-background";
+  if (isReact() && !document.querySelector(".blookedex-injected-background")) {
+    findElement("layout_main_").prepend(bg);
+  }
+}
+
+function enableCloseBtns(menu) {
+  if (menu.querySelector(".blookedex-closeBtn")) {
+    menu.querySelector(".blookedex-closeBtn").onclick = () => menu.remove();
+  }
+  if (
+    menu.querySelector(".blookedex-closeBtnLarge") &&
+    menu
+      .querySelector(".blookedex-closeBtnLarge")
+      .textContent.toLowerCase()
+      .includes("close")
+  ) {
+    menu.querySelector(".blookedex-closeBtnLarge").onclick = () =>
+      menu.remove();
+  }
 }
 
 //
@@ -575,13 +627,13 @@ function marketWAF(node) {
       ) {
         const link = currentTheme.customShopkeeper[0];
         const src = link.includes("://") ? link : chrome.runtime.getURL(link);
-        node.src = src;
+        safeSetImage(node, src);
         node.style.scale = currentTheme.customShopkeeper[1];
       }
       if (currentTheme.customStore && node.className.includes("_storeImg_")) {
         const link = currentTheme.customStore;
         const src = link.includes("://") ? link : chrome.runtime.getURL(link);
-        node.src = src;
+        safeSetImage(node, src);
       }
     })();
   }
@@ -701,6 +753,7 @@ const observer = new MutationObserver((mutations) => {
   }
 });
 
+let previous_path;
 function WalkAndFix(node) {
   if (
     !(node instanceof Element) ||
@@ -709,8 +762,13 @@ function WalkAndFix(node) {
   )
     return;
 
-  //Backgrounds
+  if (previous_path != location.href) {
+    previous_path = location.href;
+    document.body.removeClass("page-");
+    document.body.classList.add("page-" + location.pathname.split("/")[1]);
+  }
   if (["/blooks", "/stats"].includes(window.location.pathname)) {
+    //Backgrounds
     if (
       node.className.includes("_background_") &&
       !node.parentElement.className.includes("BlookScore_container_")
@@ -719,10 +777,14 @@ function WalkAndFix(node) {
     }
   } else if (
     node.className.includes("_body_") &&
-    !node.parentNode.className.includes("_cardContainer_") &&
-    location.pathname != "/settings"
+    node.parentNode.parentNode.id == "app"
   ) {
     node.classList.add("blookedex-custom-background");
+  }
+  if (node.className.includes("page_wrapper_")) {
+    if (isReact() && location.pathname !== "/blooks") {
+      injectBG();
+    }
   }
 
   correctColor(node);
@@ -759,6 +821,13 @@ if (!location.pathname.includes("/upgrade")) {
     WalkAndFix(node);
   });
 
+  document.body.classList.add("page-" + location.pathname.split("/")[1]);
+  previous_path = location.href;
+
+  if (isReact() && location.pathname !== "/blooks") {
+    injectBG();
+  }
+
   //handles user updating their settings
   chrome.storage.onChanged.addListener((changes, area) => {
     if (area === "sync" && changes.userSettings) {
@@ -771,9 +840,11 @@ if (!location.pathname.includes("/upgrade")) {
     if (res.firstInstall) {
       const installMenu = await loadTemplate("installedMenu");
       installMenu.querySelector(".blookedex-closeBtn").onclick = () => {
+        chrome.storage.sync.remove("firstInstall");
         installMenu.remove();
       };
       installMenu.querySelector(".blookedex-closeBtnLarge").onclick = () => {
+        chrome.storage.sync.remove("firstInstall");
         installMenu.remove();
       };
       installMenu.querySelector(".sidebarimg").src = chrome.runtime.getURL(
@@ -807,7 +878,52 @@ if (!location.pathname.includes("/upgrade")) {
           customStore: "/images/blooks/krakenshop.png",
         });
       document.body.appendChild(installMenu);
-      chrome.storage.sync.remove("firstInstall");
     }
   });
+
+  let editor;
+  window.addEventListener("message", receiveMessage, false);
+  async function receiveMessage(event) {
+    // IMPORTANT: Verify the sender's origin for security
+    if (!event.origin.includes(`chrome-extension://${chrome.runtime.id}`)) {
+      return;
+    }
+
+    if (event.data == "openEditor") {
+      editor = await loadTemplate("editorInitial");
+      editor.querySelector(".editorIframe").src = chrome.runtime.getURL(
+        "../../pages/customThemeEditor.html",
+      );
+
+      editor.querySelector(".editorIframe").addEventListener("load", (e) => {
+        e.target.style.removeProperty("visibility");
+        editor.querySelector("h1").remove();
+      });
+
+      editor.querySelector(".editorCloseBtn").onclick = () => {
+        editor.remove();
+      };
+
+      document.body.appendChild(editor);
+    } else if (event.data == "openEditor") {
+      console.log("test");
+      const editor = document.querySelector(".editorParent");
+      editor.remove();
+    }
+    if (event.data == "closeEditor") {
+      if (editor instanceof HTMLElement) {
+        editor.remove();
+        if (document.getElementById("blookedex-page")) {
+          document.getElementById("blookedex-page").src =
+            document.getElementById("blookedex-page").src;
+        }
+      }
+    }
+    if (event.data == "reloadTab") {
+      if (document.getElementById("blookedex-page")) {
+        document.getElementById("blookedex-page").src =
+          document.getElementById("blookedex-page").src;
+      }
+    }
+  }
 }

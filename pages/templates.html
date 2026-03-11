@@ -60,10 +60,16 @@
 
 <template id="themePreview">
   <div class="themePreview">
-    <button class="themeDeleteBtn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
-        <path fill="currentColor"
-          d="M232.7 69.9L224 96L128 96C110.3 96 96 110.3 96 128C96 145.7 110.3 160 128 160L512 160C529.7 160 544 145.7 544 128C544 110.3 529.7 96 512 96L416 96L407.3 69.9C402.9 56.8 390.7 48 376.9 48L263.1 48C249.3 48 237.1 56.8 232.7 69.9zM512 208L128 208L149.1 531.1C150.7 556.4 171.7 576 197 576L443 576C468.3 576 489.3 556.4 490.9 531.1L512 208z" />
-      </svg></button>
+    <div class="themePreviewConfigColumn">
+      <button class="themeDeleteBtn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+          <path fill="currentColor"
+            d="M232.7 69.9L224 96L128 96C110.3 96 96 110.3 96 128C96 145.7 110.3 160 128 160L512 160C529.7 160 544 145.7 544 128C544 110.3 529.7 96 512 96L416 96L407.3 69.9C402.9 56.8 390.7 48 376.9 48L263.1 48C249.3 48 237.1 56.8 232.7 69.9zM512 208L128 208L149.1 531.1C150.7 556.4 171.7 576 197 576L443 576C468.3 576 489.3 556.4 490.9 531.1L512 208z" />
+        </svg></button>
+      <button class="themeConfigBtn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+          <path
+            d="M259.1 73.5C262.1 58.7 275.2 48 290.4 48L350.2 48C365.4 48 378.5 58.7 381.5 73.5L396 143.5C410.1 149.5 423.3 157.2 435.3 166.3L503.1 143.8C517.5 139 533.3 145 540.9 158.2L570.8 210C578.4 223.2 575.7 239.8 564.3 249.9L511 297.3C511.9 304.7 512.3 312.3 512.3 320C512.3 327.7 511.8 335.3 511 342.7L564.4 390.2C575.8 400.3 578.4 417 570.9 430.1L541 481.9C533.4 495 517.6 501.1 503.2 496.3L435.4 473.8C423.3 482.9 410.1 490.5 396.1 496.6L381.7 566.5C378.6 581.4 365.5 592 350.4 592L290.6 592C275.4 592 262.3 581.3 259.3 566.5L244.9 496.6C230.8 490.6 217.7 482.9 205.6 473.8L137.5 496.3C123.1 501.1 107.3 495.1 99.7 481.9L69.8 430.1C62.2 416.9 64.9 400.3 76.3 390.2L129.7 342.7C128.8 335.3 128.4 327.7 128.4 320C128.4 312.3 128.9 304.7 129.7 297.3L76.3 249.8C64.9 239.7 62.3 223 69.8 209.9L99.7 158.1C107.3 144.9 123.1 138.9 137.5 143.7L205.3 166.2C217.4 157.1 230.6 149.5 244.6 143.4L259.1 73.5zM320.3 400C364.5 399.8 400.2 363.9 400 319.7C399.8 275.5 363.9 239.8 319.7 240C275.5 240.2 239.8 276.1 240 320.3C240.2 364.5 276.1 400.2 320.3 400z" />
+        </svg></button>
+    </div>
     <div class="themePreviewBody">
       <div class="themePreviewSidebar">
         <div style="height:3px;width:15px;background:#efefefee;border-radius:10px;"></div>
@@ -132,14 +138,29 @@
 <template id="customThemeMenu">
   <div class="blookedex-modal">
     <div class="blookedex-popupMenu">
-      <div class="customThemeMenu-message">Paste theme json (UI coming soon)</div>
-      <textarea class="customThemeMenuInput" placeholder="Format: json object with following properties:
-  name: string, the name of your theme (must be unique)
-  primary: string, the color you want your theme's primary color to be (can be css gradient)
-  secondary: string, the color you want your theme's secondary color to be (can be css gradient)
-  background: string or array [string, string],
-    if string: the color you want your theme's background to be (can be css gradient)
-    if array: creates gradient from top (first string color) to bottom (second string color)"></textarea>
+      <div class="customThemeMenu-title">Create New Theme</div>
+      <div class="blookedex-row">
+        <div class="blookedex-column">
+          <button class="customThemeMenuBtn customThemeMenu-EditorBtn">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+              <path
+                d="M290.4 70C288.9 66.4 285.4 64 281.5 64L262.5 64C258.6 64 255 66.4 253.6 70L232.9 121.7C229.7 129.7 218.3 129.7 215.1 121.7L194.4 70C192.9 66.4 189.4 64 185.5 64L176 64C149.5 64 128 85.5 128 112L128 320L512 320L512 112C512 85.5 490.5 64 464 64L358.5 64C354.6 64 351 66.4 349.6 70L328.9 121.7C325.7 129.7 314.3 129.7 311.1 121.7L290.4 70zM128 368L128 384C128 419.3 156.7 448 192 448L256 448L256 512C256 547.3 284.7 576 320 576C355.3 576 384 547.3 384 512L384 448L448 448C483.3 448 512 419.3 512 384L512 368L128 368zM320 528C311.2 528 304 520.8 304 512C304 503.2 311.2 496 320 496C328.8 496 336 503.2 336 512C336 520.8 328.8 528 320 528z" />
+            </svg>
+          </button>
+          <div class="customThemeMenuBtnLabel">Make Your Own!</div>
+        </div>
+        <div class="customThemeMenuOR">OR</div>
+        <div class="blookedex-column">
+          <button class="customThemeMenuBtn customThemeMenu-PasteBtn">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+              <path
+                d="M128 64C92.7 64 64 92.7 64 128L64 448C64 483.3 92.7 512 128 512L240 512L240 288C240 226.1 290.1 176 352 176L416 176L416 128C416 92.7 387.3 64 352 64L128 64zM312 176L168 176C154.7 176 144 165.3 144 152C144 138.7 154.7 128 168 128L312 128C325.3 128 336 138.7 336 152C336 165.3 325.3 176 312 176zM352 224C316.7 224 288 252.7 288 288L288 512C288 547.3 316.7 576 352 576L512 576C547.3 576 576 547.3 576 512L576 346.5C576 329.5 569.3 313.2 557.3 301.2L498.8 242.7C486.8 230.7 470.5 224 453.5 224L352 224z" />
+            </svg>
+          </button>
+          <div class="customThemeMenuBtnLabel">Paste Theme JSON</div>
+        </div>
+      </div>
+
 
       <button class="blookedex-closeBtn"><svg style="width:.6875em;height:1em;" aria-hidden="true" focusable="false"
           data-prefix="fas" data-icon="times" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 512">
@@ -148,11 +169,31 @@
         </svg></button>
       <button class="blookedex-closeBtnLarge">
         <div class="blookedex-closeBtnLargeFront">
-          Okay!</div>
+          Close</div>
         <div class="blookedex-closeBtnLargeMiddle"></div>
         <div class="blookedex-closeBtnLargeShadow"></div>
       </button>
     </div>
+  </div>
+</template>
+
+<template id="customThemeMenuPaste">
+  <div class="blookedex-column">
+    <div class="blookedex-popupMenu-message">Paste theme JSON below.</div>
+    <textarea class="customThemeMenuInput" placeholder="Format: json object with following properties:
+    name: string, the name of your theme (must be unique)
+    primary: string, the color you want your theme's primary color to be (can be css gradient)
+    secondary: string, the color you want your theme's secondary color to be (can be css gradient)
+    background: string or array [string, string],
+      if string: the color you want your theme's background to be (can be css gradient)
+      if array: creates gradient from top (first string color) to bottom (second string color)">
+{
+  "name": "My Theme",
+  "primary": "#fff",
+  "secondary": "#fff",
+  "background": ["#fff", "#fff"]
+}
+    </textarea>
   </div>
 </template>
 
@@ -273,6 +314,52 @@
         <div class="blookedex-closeBtnLargeMiddle"></div>
         <div class="blookedex-closeBtnLargeShadow"></div>
       </button>
+    </div>
+  </div>
+</template>
+
+<template id="editorInitial">
+  <div class="editorParent">
+    <h1>Loading Editor...</h1>
+    <iframe class="editorIframe" style="visibility: hidden;"></iframe>
+    <button class="editorCloseBtn">X</button>
+  </div>
+</template>
+
+<template id="editorName">
+  <div id="modal">
+    <div class="nameBox">
+      <button class="blookedex-closeBtn"><svg style="width:.6875em;height:1em;" aria-hidden="true" focusable="false"
+          data-prefix="fas" data-icon="times" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 512">
+          <path class="blookedex-btnClose" fill="hsla(0, 0%, 100%, .2)"
+            d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z" />
+        </svg></button>
+      <button class="blookedex-closeBtnLarge" id="nameBtn">
+        <div class="blookedex-closeBtnLargeFront">Create!</div>
+        <div class="blookedex-closeBtnLargeMiddle"></div>
+        <div class="blookedex-closeBtnLargeShadow"></div>
+      </button>
+      <h2>Name Your Theme:</h2>
+      <input id="name" />
+    </div>
+  </div>
+</template>
+
+<template id="themeConfigMenu">
+  <div class="blookedex-modal">
+    <div class="blookedex-popupMenu">
+      <button class="blookedex-closeBtn"><svg style="width:.6875em;height:1em;" aria-hidden="true" focusable="false"
+          data-prefix="fas" data-icon="times" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 512">
+          <path class="blookedex-btnClose" fill="hsla(0, 0%, 100%, .2)"
+            d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z" />
+        </svg></button>
+      <button class="blookedex-closeBtnLarge" id="nameBtn">
+        <div class="blookedex-closeBtnLargeFront">Update</div>
+        <div class="blookedex-closeBtnLargeMiddle"></div>
+        <div class="blookedex-closeBtnLargeShadow"></div>
+      </button>
+      <div class="customThemeMenu-title">Theme Config</div>
+      <textarea class="customThemeMenuInput"></textarea>
     </div>
   </div>
 </template>

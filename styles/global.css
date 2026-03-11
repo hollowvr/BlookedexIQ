@@ -3,12 +3,13 @@
   --blookedex-secondary: blue;
   --blookedex-background: linear-gradient(rgb(0, 255, 0), rgb(255, 0, 255));*/
   --blookedex-primaryDark: color-mix(
-    in srgb,
-    var(--blookedex-primary) 60%,
-    black
+    in oklab,
+    var(--blookedex-primary),
+    black 35%
   );
   --purple: var(--blookedex-primary) !important;
   --blookedex-bouncy: cubic-bezier(0.68, -0.1, 0.27, 1.55);
+  --blookedex-selectBouncy: cubic-bezier(0.25, 0.75, 0.35, 1.5);
 }
 
 @font-face {
@@ -56,6 +57,15 @@ body:has([class*="SettingsTabs_wrapper_"])::before {
   background-position: -100px -100px;
   opacity: 0.1;
   transform: translate(-50%, -50%) rotate(15deg);
+  z-index: -1;
+}
+
+.blookedex-injected-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   z-index: -1;
 }
 
@@ -123,6 +133,7 @@ body:has([class*="SettingsTabs_wrapper_"])::before {
 
 .blookedex-closeBtn path {
   transition: all 0.2s ease;
+  fill: rgba(255, 255, 255, 0.2);
 }
 
 .blookedex-closeBtn:hover path {
@@ -572,7 +583,15 @@ body:has([class*="SettingsTabs_wrapper_"])::before {
 
 .blookedex-row {
   display: flex;
+  align-items: center;
   gap: 10px;
+}
+
+.blookedex-column {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  align-items: center;
 }
 
 #themesContainer {
@@ -596,7 +615,7 @@ body:has([class*="SettingsTabs_wrapper_"])::before {
   border-color: rgba(228, 232, 236, 0.2);
   border-radius: 10px;
   background: rgba(239, 239, 239, 0.133);
-  transition: transform 0.3s cubic-bezier(0.25, 0.75, 0.35, 1.5);
+  transition: transform 0.3s var(--blookedex-selectBouncy);
   position: relative;
   --primary: #9a48aa;
   --secondary: #08c2d0;
@@ -711,22 +730,104 @@ body:has([class*="SettingsTabs_wrapper_"])::before {
   scale: 1;
 }
 
+@keyframes openEditor {
+  from {
+    opacity: 0;
+    scale: 0.7;
+  }
+  to {
+    opacity: 1;
+    scale: 1;
+  }
+}
+
+.editorParent {
+  width: 100vw;
+  height: 100vh;
+  z-index: 999;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: linear-gradient(#0bc2cf, #349aef);
+  animation: openEditor 0.4s ease;
+}
+
+.editorParent > h1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-family: "TO";
+}
+
+.editorIframe {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  border: none;
+}
+
+.editorCloseBtn {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow:
+    inset 0 0 10px rgba(255, 255, 255, 0.2),
+    0 2px 5px rgba(0, 0, 0, 0.2);
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  border: none;
+  border-radius: 5px;
+  z-index: 3;
+  transition: all 0.3s var(--blookedex-selectBouncy);
+  cursor: pointer;
+  font-family: "TO";
+  font-size: 1.2em;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.editorCloseBtn:hover {
+  background: rgba(255, 255, 255, 0.4);
+  box-shadow:
+    inset 0 0 10px rgba(255, 255, 255, 0.5),
+    0 5px 7px rgba(0, 0, 0, 0.3);
+  scale: 1.1;
+  color: white;
+  transform: translateY(-3px);
+}
+
 .blookedex-iconDeleteBtn svg {
   width: 18px;
 }
 
-[class*="_header_"],
-[class*="_subheader_"],
-[class*="Header_title_"] {
+/*Headers*/
+
+[class*="_profileBody_"] > [class*="_header_"],
+[class*="page_wrapper_"] > [class*="_header_"],
+[class*="layout_main_"] > [class*="_header_"] {
   color: white !important;
   text-shadow: 0 0 0.2em rgba(0, 0, 0, 0.2);
+  border: none !important;
+}
+
+[class*="Header_scrolled_"] input {
+  box-shadow:
+    0 10px 20px rgba(0, 0, 0, 0.5),
+    0 5px 10px rgba(0, 0, 0, 0.3);
 }
 
 /*Largen shadow for Discover page*/
 [class*="Header_header"],
 [class*="Header_title"] {
-  color: #3a3a3a !important;
-  text-shadow: none;
+  background: none !important;
 }
 
 /*Sidebar buttons*/
@@ -823,7 +924,7 @@ body:has([class*="SettingsTabs_wrapper_"]) [class*="Header_header_"] {
 /*news*/
 aside > [class*="_container_"],
 [class*="_postsContainer_"] {
-  background: var(--blookedex-background) !important;
+  background: var(--blookedex-primaryDark) !important;
   box-shadow: inset 7px 0 #0003;
 }
 
@@ -839,4 +940,80 @@ aside h2[class*="_header_"],
   color: #3a3a3a;
   text-shadow: none;
   font-family: var(--font-nunito);
+}
+
+[class*="Table_row_"]:hover {
+  background: rgba(0, 0, 0, 0.2) !important;
+}
+
+/*Discover Page*/
+article[class*="Card_card_"] {
+  background: white;
+  border-radius: var(--card-radius);
+  padding: 5px;
+  padding-bottom: 13px;
+  box-shadow:
+    inset 0 -7px #0003,
+    0 0 4px #00000026;
+}
+
+[class*="CurriculumNav_container_"] span {
+  text-shadow: none;
+  color: #3a3a3a;
+}
+
+[class*="Tabs_title_"] {
+  color: white !important;
+  font-family: var(--font-nunito);
+  text-shadow: none;
+}
+
+[class*="Tabs_tab_"]:hover {
+  background-color: rgba(0, 0, 0, 0.2) !important;
+}
+
+.page-curriculum [class*="Header_headerContainer_"] {
+  height: 70px;
+}
+
+[class*="Finder_navWrapper_"] {
+  color: white;
+}
+
+[class*="Finder_navWrapper_"]:hover {
+  color: #3a3a3a;
+}
+
+/*Set Page*/
+[class*="SetInfoSidebar_sidebar_"] {
+  background: var(--blookedex-primaryDark);
+  border: none !important;
+  color: white !important;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+
+  [class*="SetInfoSidebar_infoIcon_"] {
+    color: white !important;
+  }
+
+  [class*="SetInfoSidebar_author_"] {
+    color: white !important;
+  }
+
+  [class*="SetActions_icon_"] {
+    background: transparent !important;
+    color: white !important;
+  }
+}
+
+/*Create Page*/
+.page-create [class*="page_wrapper_"] {
+  color: white;
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+
+  [class*="ButtonPicker_"] {
+    background: transparent;
+  }
+  [class*="ButtonPicker_selected_"] {
+    background: rgba(0, 0, 0, 0.2);
+  }
 }

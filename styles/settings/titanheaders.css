@@ -1,14 +1,8 @@
-[class*="_header_"],
-[class*="_subheader_"],
-[class*="Header_title_"] {
+[class*="_profileBody_"] > [class*="_header_"],
+[class*="page_wrapper_"] > [class*="_header_"],
+[class*="layout_main_"] > [class*="_header_"]:not([class*="Tabs_title_"]) {
   font-family: "TO" !important;
   text-shadow:
-    0.1em 0.1em 0 rgba(0, 0, 0, 0.4),
-    0 0 0.2em rgba(0, 0, 0, 0.2);
-}
-
-[class*="Header_header"],
-[class*="Header_title"] {
-  color: #3a3a3a !important;
-  text-shadow: none;
+    4px 4px 0 rgba(0, 0, 0, 0.4),
+    0 0 5px rgba(0, 0, 0, 0.2) !important;
 }
