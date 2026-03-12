@@ -349,10 +349,10 @@ document.getElementById("changelogBtn").onclick = async () => {
 };
 
 document.getElementById("adminCodeBtn").onclick = async () => {
-  const text = document.getElementById("adminCodeInput").value;
+  const text = document.getElementById("adminCodeInput").value.toLowerCase();
   const adminObject = await retrieveJSON("/admincodes.json");
   console.log(adminObject);
-  if (Object.keys(adminObject).includes(text.toLowerCase())) {
+  if (Object.keys(adminObject).includes(text)) {
     const adminCodes = await retrieveSetting("adminCodes");
     if (!adminCodes.includes(text)) {
       adminCodes.push(text);
